@@ -7,6 +7,8 @@ public class Calc extends JFrame {
 //создаем класс Calc, отвечающий за фрейм
 JButton but; //кнопка 1
 JButton but2; // кнопка 2
+JTextArea area; // текстовая область
+JTextField tf; //текстовое поле
 Calc(){
 super("Калькулятор расчета символов в тексте");
 // название апплета
@@ -18,7 +20,15 @@ setLayout(new BorderLayout());
 but = new JButton("Рассчитать");
 add(but, BorderLayout.EAST);
 //создается кнопка с текстом "Рассчитать", размещается в правой части формы
-
+area = new JTextArea();
+area.setLineWrap(true); //распределяет текст по строкам
+area.setWrapStyleWord(true);
+//организация переноса слова на следующую строку целком
+add(area, BorderLayout.CENTER);
+//создается JTextArea - область для ввода текста, размещается в центральной части формы, т.к. это основной элемент интерфейса.
+tf = new JTextField(50);
+add(tf, BorderLayout.SOUTH);
+//создается текстовое поле JTextField размещается в нижней части формы
 but2 = new JButton("Очистить");
 add(but2, BorderLayout.WEST);
 //создается кнопка с текстом "Очистить", размещается в левой части формы
