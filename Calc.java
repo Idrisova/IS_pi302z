@@ -32,6 +32,18 @@ add(tf, BorderLayout.SOUTH);
 but2 = new JButton("Очистить");
 add(but2, BorderLayout.WEST);
 //создается кнопка с текстом "Очистить", размещается в левой части формы
+but2.addActionListener(new ActionListener()
+{
+@Override
+//Аннотация для проверки переопределения метода.
+public void actionPerformed(ActionEvent arg0) {
+// При наличии в нашем классе приложения реализации ActionListener и перегрузки метода actionPerformed мы обрабатываем все события кнопки в пределах нашего апплета
+area.setText("");
+//производится очистка набранных символов.
+tf.setText("");
+//производится очистка тектового поля-вывода. 
+}  
+}
 }
 public static void main(String[] args) {
 
