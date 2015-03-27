@@ -9,10 +9,10 @@ import javax.swing.*;
 //подгружаем библиотеку графических элементов пользовательского интерфейса
 public class Calc extends JFrame {
 //создаем класс Calc, отвечающий за фрейм
-JButton but; //кнопка 1
-JButton but2; // кнопка 2
-JTextArea area; // текстовая область
-JTextField tf; //текстовое поле
+JButton but_calc; //кнопка 1
+JButton but_clear; // кнопка 2
+JTextArea area_input; // текстовая область
+JTextField textfield_out; //текстовое поле
 Calc(){
 super("Калькулятор расчета символов в тексте");
 // название апплета
@@ -21,47 +21,47 @@ setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 setSize(400, 300); //определяем размер нашего окна (ширина и высота)
 setLayout(new BorderLayout());
 //метод setLayout( ) - менеджер компоновки
-but = new JButton("Рассчитать");
-add(but, BorderLayout.EAST);
+but_calc = new JButton("Рассчитать");
+add(but_calc, BorderLayout.EAST);
 //создается кнопка с текстом "Рассчитать", размещается в правой части формы
-area = new JTextArea();
-area.setLineWrap(true); //распределяет текст по строкам
-area.setWrapStyleWord(true);
+area_input = new JTextArea();
+area_input.setLineWrap(true); //распределяет текст по строкам
+area_input.setWrapStyleWord(true);
 //организация переноса слова на следующую строку целком
-add(area, BorderLayout.CENTER);
+add(area_input, BorderLayout.CENTER);
 //создается JTextArea - область для ввода текста, размещается в центральной части формы, т.к. это основной элемент интерфейса.
-tf = new JTextField(50);
-add(tf, BorderLayout.SOUTH);
+textfield_out = new JTextField(50);
+add(textfield_out, BorderLayout.SOUTH);
 //создается текстовое поле JTextField размещается в нижней части формы
-but2 = new JButton("Очистить");
-add(but2, BorderLayout.WEST);
+but_clear = new JButton("Очистить");
+add(but_clear, BorderLayout.WEST);
 //создается кнопка с текстом "Очистить", размещается в левой части формы
-but.addActionListener(new ActionListener()
+but_calc.addActionListener(new ActionListener()
 {
 @Override
 //Аннотация для проверки переопределения метода.
 public void actionPerformed(ActionEvent arg0) {
 // При наличии в нашем классе приложения реализации ActionListener и перегрузки метода actionPerformed мы обрабатываем все события кнопки в пределах нашего апплета
-if (area.getText().trim().length() != 0 )
+if (area_input.getText().trim().length() != 0 )
 //проверка текстовой области на наличие в ней введенного текста(любых символов)
 {
-tf.setText("Количество символов: " + area.getText().length() + ", Количество слов: " + area.getText().trim().split("\\s+").length);
+textfield_out.setText("Количество символов: " + area_input.getText().length() + ", Количество слов: " + area_input.getText().trim().split("\\s+").length);
 //производится подсчет символов и количества слов введенных в текстовую область и выводит ее результаты в текстовое поле JTextField
 }
-else {tf.setText("ОШИБКА: Текст отсутствует!");
+else {textfield_out.setText("ОШИБКА: Текст отсутствует!");
 // в случае если не введены символы в текстовую область выводится сообщение: " ОШИБКА: Текст отсутствует!"
 }
 }
 });
-but2.addActionListener(new ActionListener()
+but_clear.addActionListener(new ActionListener()
 {
 @Override
 //Аннотация для проверки переопределения метода.
 public void actionPerformed(ActionEvent arg0) {
 // При наличии в нашем классе приложения реализации ActionListener и перегрузки метода actionPerformed мы обрабатываем все события кнопки в пределах нашего апплета
-area.setText("");
+area_input.setText("");
 //производится очистка набранных символов.
-tf.setText("");
+textfield_out.setText("");
 //производится очистка тектового поля-вывода. 
 } } ); }
 public static void main(String[] args) {
